@@ -1,0 +1,74 @@
+@import '../../define.scss';
+
+.svg-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: currentColor;
+
+  pointer-events: fill;
+
+  :global(svg) {
+    fill: currentColor;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.header-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: $panel-v-padding $panel-h-padding;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.header-content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-content {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+
+  cursor: default;
+
+  .app-title {
+    font-size: 1.625rem;
+    font-variant: small-caps;
+    font-weight: 600;
+    height: 27px;
+    width: 200px;
+    margin-top: 7px;
+    color: white;
+  }
+
+  .app-tagline {
+    font-size: 20px;
+  }
+}
+
+.right-content {
+  display: flex;
+  font-size: $font-u2;
+  gap: 16px;
+
+  a {
+    color: white;
+
+    &:visited {
+      color: white;
+    }
+  }
+}

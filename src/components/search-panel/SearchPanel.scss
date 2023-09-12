@@ -1,0 +1,199 @@
+@import '../../define.scss';
+
+$button-border-radius: 5px;
+
+.search-panel-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  color: white;
+
+  gap: 12px;
+}
+
+.svg-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1em;
+  height: 1em;
+  color: currentColor;
+
+  pointer-events: fill;
+
+  :global(svg) {
+    fill: currentColor;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+$search-h-margin: 8px;
+$search-input-height: 15px;
+$search-input-v-padding: 10px;
+
+$logo-icon-width: 24px;
+$cancel-icon-width: 14px;
+$cancel-icon-margin: 8px;
+
+$search-bar-h-padding: 12px;
+$search-bar-gap: 8px;
+
+.search-bar {
+  color: $gray-600;
+  margin: $search-h-margin 0 0 0;
+  display: flex;
+  flex-direction: row;
+  gap: $search-bar-gap;
+  align-items: center;
+  pointer-events: all;
+
+  width: 100%;
+  padding: 0 $search-bar-h-padding;
+  border-radius: $button-border-radius;
+  background-color: change-color($color: white, $alpha: 1);
+  transition: box-shadow 150ms ease-in-out;
+  box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.2), 0 -1px 0 hsla(0, 0%, 0%, 0.02);
+
+  &.focused {
+    box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.1), 0 -1px 0 hsla(0, 0%, 0%, 0.02);
+  }
+
+  &:focus {
+    background-color: red;
+  }
+
+  #search-bar-input {
+    border: none;
+    margin: $search-input-v-padding 0;
+    width: 100%;
+    height: $search-input-height;
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+
+    &::placeholder {
+      color: $gray-600;
+    }
+  }
+
+  .logo-icon {
+    width: $logo-icon-width;
+    height: $logo-icon-width;
+  }
+
+  .end-button {
+    position: relative;
+    margin-left: $cancel-icon-margin;
+    width: 1em;
+    height: 1em;
+
+    .search-icon {
+      position: absolute;
+      width: 1em;
+      height: 1em;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      color: currentColor;
+      transition: color 150ms ease-in-out, opacity 150ms ease-in-out;
+      opacity: 1;
+
+      &.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    .cancel-icon {
+      position: absolute;
+      width: $cancel-icon-width;
+      height: $cancel-icon-width;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      color: $gray-500;
+      transition: color 150ms ease-in-out, opacity 150ms ease-in-out;
+      opacity: 1;
+      cursor: default;
+
+      &:hover {
+        color: adjust-color($color: $gray-500, $lightness: -10%);
+      }
+
+      &:active {
+        color: adjust-color($color: $gray-500, $lightness: 10%);
+      }
+
+      &.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.category-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+
+  .name {
+    font-size: $font-u1;
+    font-weight: 600;
+  }
+}
+
+.chips-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 6px;
+  column-gap: 6px;
+  font-size: $font-d1;
+  padding: 5px 0;
+
+  .chip {
+    padding: 1px 7px;
+    border-radius: 5px;
+    border: 1px solid hsla(0, 100%, 100%, 0.5);
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    transition: background-color 75ms, border 75ms;
+
+    &:hover {
+      background-color: change-color($color: $teal-400, $lightness: 20%);
+    }
+
+    $chip-selected-color: hsl(174, 60%, 27%);
+
+    &.selected {
+      background-color: $chip-selected-color;
+      border: 1px solid $chip-selected-color;
+
+      &:hover {
+        background-color: change-color($color: $teal-400, $lightness: 28%);
+      }
+    }
+  }
+}
